@@ -1,0 +1,831 @@
+
+Temperature Controlled Fan.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000004fa  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000052  00800060  000004fa  0000058e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000001  008000b2  008000b2  000005e0  2**0
+                  ALLOC
+  3 .stab         0000093c  00000000  00000000  000005e0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      0000017d  00000000  00000000  00000f1c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .comment      0000002f  00000000  00000000  00001099  2**0
+                  CONTENTS, READONLY
+  6 .debug_aranges 00000068  00000000  00000000  000010c8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   00000b9d  00000000  00000000  00001130  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 000001e9  00000000  00000000  00001ccd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   00000358  00000000  00000000  00001eb6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_frame  000000e4  00000000  00000000  00002210  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_str    000001be  00000000  00000000  000022f4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_loc    00000461  00000000  00000000  000024b2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_ranges 00000058  00000000  00000000  00002913  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d4 e0       	ldi	r29, 0x04	; 4
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	ea ef       	ldi	r30, 0xFA	; 250
+  68:	f4 e0       	ldi	r31, 0x04	; 4
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a2 3b       	cpi	r26, 0xB2	; 178
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	a2 eb       	ldi	r26, 0xB2	; 178
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a3 3b       	cpi	r26, 0xB3	; 179
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 a7 01 	call	0x34e	; 0x34e <main>
+  8a:	0c 94 7b 02 	jmp	0x4f6	; 0x4f6 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <LCD_cmnd>:
+unsigned char adc_value;
+int main();
+
+void LCD_cmnd(unsigned char cmnd) //function to send command to LCD Module
+{
+	LCD_DATA_PORT = (LCD_DATA_PORT & 0x0F) | (cmnd & 0xF0); //send upper 4 bit
+  92:	9b b3       	in	r25, 0x1b	; 27
+  94:	28 2f       	mov	r18, r24
+  96:	20 7f       	andi	r18, 0xF0	; 240
+  98:	9f 70       	andi	r25, 0x0F	; 15
+  9a:	92 2b       	or	r25, r18
+  9c:	9b bb       	out	0x1b, r25	; 27
+	LCD_DATA_PORT &= ~(1<<LCD_RS); //0b11111011 //RS = 0
+  9e:	da 98       	cbi	0x1b, 2	; 27
+	LCD_DATA_PORT |= 1<<LCD_EN; //0b00001000 //EN = 1
+  a0:	db 9a       	sbi	0x1b, 3	; 27
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  a2:	e7 ec       	ldi	r30, 0xC7	; 199
+  a4:	f0 e0       	ldi	r31, 0x00	; 0
+  a6:	31 97       	sbiw	r30, 0x01	; 1
+  a8:	f1 f7       	brne	.-4      	; 0xa6 <LCD_cmnd+0x14>
+  aa:	00 c0       	rjmp	.+0      	; 0xac <LCD_cmnd+0x1a>
+  ac:	00 00       	nop
+	_delay_us(50);
+	LCD_DATA_PORT &= ~(1<<LCD_EN); //0b11110111 //EN = 0
+  ae:	db 98       	cbi	0x1b, 3	; 27
+  b0:	ef e1       	ldi	r30, 0x1F	; 31
+  b2:	f3 e0       	ldi	r31, 0x03	; 3
+  b4:	31 97       	sbiw	r30, 0x01	; 1
+  b6:	f1 f7       	brne	.-4      	; 0xb4 <LCD_cmnd+0x22>
+  b8:	00 c0       	rjmp	.+0      	; 0xba <LCD_cmnd+0x28>
+  ba:	00 00       	nop
+	_delay_us(200);
+	LCD_DATA_PORT = (LCD_DATA_PORT & 0x0F) | (cmnd << 4); //send lower 4 bit
+  bc:	2b b3       	in	r18, 0x1b	; 27
+  be:	f0 e1       	ldi	r31, 0x10	; 16
+  c0:	8f 9f       	mul	r24, r31
+  c2:	c0 01       	movw	r24, r0
+  c4:	11 24       	eor	r1, r1
+  c6:	92 2f       	mov	r25, r18
+  c8:	9f 70       	andi	r25, 0x0F	; 15
+  ca:	89 2b       	or	r24, r25
+  cc:	8b bb       	out	0x1b, r24	; 27
+	LCD_DATA_PORT |= 1<<LCD_EN; //0b00001000 //EN = 1
+  ce:	db 9a       	sbi	0x1b, 3	; 27
+  d0:	87 ec       	ldi	r24, 0xC7	; 199
+  d2:	90 e0       	ldi	r25, 0x00	; 0
+  d4:	01 97       	sbiw	r24, 0x01	; 1
+  d6:	f1 f7       	brne	.-4      	; 0xd4 <LCD_cmnd+0x42>
+  d8:	00 c0       	rjmp	.+0      	; 0xda <LCD_cmnd+0x48>
+  da:	00 00       	nop
+	_delay_us(50);
+	LCD_DATA_PORT &= ~(1<<LCD_EN); //0b11110111 //EN = 0
+  dc:	db 98       	cbi	0x1b, 3	; 27
+  de:	08 95       	ret
+
+000000e0 <LCD_data>:
+}
+void LCD_data(unsigned char data) //Function to send data to LCD Module
+{
+	LCD_DATA_PORT = (LCD_DATA_PORT & 0x0F) | (data & 0xF0);
+  e0:	9b b3       	in	r25, 0x1b	; 27
+  e2:	28 2f       	mov	r18, r24
+  e4:	20 7f       	andi	r18, 0xF0	; 240
+  e6:	9f 70       	andi	r25, 0x0F	; 15
+  e8:	92 2b       	or	r25, r18
+  ea:	9b bb       	out	0x1b, r25	; 27
+	LCD_DATA_PORT |= 1<<LCD_RS; //0b00000100 //RS = 1
+  ec:	da 9a       	sbi	0x1b, 2	; 27
+	LCD_DATA_PORT |= 1<<LCD_EN; //0b00001000
+  ee:	db 9a       	sbi	0x1b, 3	; 27
+  f0:	e7 ec       	ldi	r30, 0xC7	; 199
+  f2:	f0 e0       	ldi	r31, 0x00	; 0
+  f4:	31 97       	sbiw	r30, 0x01	; 1
+  f6:	f1 f7       	brne	.-4      	; 0xf4 <LCD_data+0x14>
+  f8:	00 c0       	rjmp	.+0      	; 0xfa <LCD_data+0x1a>
+  fa:	00 00       	nop
+	_delay_us(50);
+	LCD_DATA_PORT &= ~(1<<LCD_EN); //0b11110111
+  fc:	db 98       	cbi	0x1b, 3	; 27
+  fe:	ef e3       	ldi	r30, 0x3F	; 63
+ 100:	ff e1       	ldi	r31, 0x1F	; 31
+ 102:	31 97       	sbiw	r30, 0x01	; 1
+ 104:	f1 f7       	brne	.-4      	; 0x102 <LCD_data+0x22>
+ 106:	00 c0       	rjmp	.+0      	; 0x108 <LCD_data+0x28>
+ 108:	00 00       	nop
+	_delay_us(2000);
+	LCD_DATA_PORT = (LCD_DATA_PORT & 0x0F) | (data << 4);
+ 10a:	2b b3       	in	r18, 0x1b	; 27
+ 10c:	f0 e1       	ldi	r31, 0x10	; 16
+ 10e:	8f 9f       	mul	r24, r31
+ 110:	c0 01       	movw	r24, r0
+ 112:	11 24       	eor	r1, r1
+ 114:	92 2f       	mov	r25, r18
+ 116:	9f 70       	andi	r25, 0x0F	; 15
+ 118:	89 2b       	or	r24, r25
+ 11a:	8b bb       	out	0x1b, r24	; 27
+	LCD_DATA_PORT |= 1<<LCD_EN; //0b00001000
+ 11c:	db 9a       	sbi	0x1b, 3	; 27
+ 11e:	8f e3       	ldi	r24, 0x3F	; 63
+ 120:	9f e1       	ldi	r25, 0x1F	; 31
+ 122:	01 97       	sbiw	r24, 0x01	; 1
+ 124:	f1 f7       	brne	.-4      	; 0x122 <LCD_data+0x42>
+ 126:	00 c0       	rjmp	.+0      	; 0x128 <LCD_data+0x48>
+ 128:	00 00       	nop
+	_delay_us(2000);
+	LCD_DATA_PORT &= ~(1<<LCD_EN); //0b11110111
+ 12a:	db 98       	cbi	0x1b, 3	; 27
+ 12c:	08 95       	ret
+
+0000012e <LCD_initialize>:
+}
+void LCD_initialize(void) //Function to initialize LCD Module
+{
+	LCD_DATA_DDR = 0xFC;
+ 12e:	8c ef       	ldi	r24, 0xFC	; 252
+ 130:	8a bb       	out	0x1a, r24	; 26
+	LCD_DATA_PORT &= ~(1<<LCD_EN); //0b11110111;
+ 132:	db 98       	cbi	0x1b, 3	; 27
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 134:	2f ef       	ldi	r18, 0xFF	; 255
+ 136:	83 ec       	ldi	r24, 0xC3	; 195
+ 138:	99 e0       	ldi	r25, 0x09	; 9
+ 13a:	21 50       	subi	r18, 0x01	; 1
+ 13c:	80 40       	sbci	r24, 0x00	; 0
+ 13e:	90 40       	sbci	r25, 0x00	; 0
+ 140:	e1 f7       	brne	.-8      	; 0x13a <LCD_initialize+0xc>
+ 142:	00 c0       	rjmp	.+0      	; 0x144 <LCD_initialize+0x16>
+ 144:	00 00       	nop
+	_delay_ms(200);
+	LCD_cmnd(0x33);
+ 146:	83 e3       	ldi	r24, 0x33	; 51
+ 148:	0e 94 49 00 	call	0x92	; 0x92 <LCD_cmnd>
+ 14c:	2f ef       	ldi	r18, 0xFF	; 255
+ 14e:	89 ef       	ldi	r24, 0xF9	; 249
+ 150:	90 e0       	ldi	r25, 0x00	; 0
+ 152:	21 50       	subi	r18, 0x01	; 1
+ 154:	80 40       	sbci	r24, 0x00	; 0
+ 156:	90 40       	sbci	r25, 0x00	; 0
+ 158:	e1 f7       	brne	.-8      	; 0x152 <LCD_initialize+0x24>
+ 15a:	00 c0       	rjmp	.+0      	; 0x15c <LCD_initialize+0x2e>
+ 15c:	00 00       	nop
+	_delay_ms(20);
+	LCD_cmnd(0x32);
+ 15e:	82 e3       	ldi	r24, 0x32	; 50
+ 160:	0e 94 49 00 	call	0x92	; 0x92 <LCD_cmnd>
+ 164:	2f ef       	ldi	r18, 0xFF	; 255
+ 166:	89 ef       	ldi	r24, 0xF9	; 249
+ 168:	90 e0       	ldi	r25, 0x00	; 0
+ 16a:	21 50       	subi	r18, 0x01	; 1
+ 16c:	80 40       	sbci	r24, 0x00	; 0
+ 16e:	90 40       	sbci	r25, 0x00	; 0
+ 170:	e1 f7       	brne	.-8      	; 0x16a <LCD_initialize+0x3c>
+ 172:	00 c0       	rjmp	.+0      	; 0x174 <LCD_initialize+0x46>
+ 174:	00 00       	nop
+	_delay_ms(20);
+	LCD_cmnd(0x28);
+ 176:	88 e2       	ldi	r24, 0x28	; 40
+ 178:	0e 94 49 00 	call	0x92	; 0x92 <LCD_cmnd>
+ 17c:	2f ef       	ldi	r18, 0xFF	; 255
+ 17e:	89 ef       	ldi	r24, 0xF9	; 249
+ 180:	90 e0       	ldi	r25, 0x00	; 0
+ 182:	21 50       	subi	r18, 0x01	; 1
+ 184:	80 40       	sbci	r24, 0x00	; 0
+ 186:	90 40       	sbci	r25, 0x00	; 0
+ 188:	e1 f7       	brne	.-8      	; 0x182 <LCD_initialize+0x54>
+ 18a:	00 c0       	rjmp	.+0      	; 0x18c <LCD_initialize+0x5e>
+ 18c:	00 00       	nop
+	_delay_ms(20);
+	LCD_cmnd(0x0E);
+ 18e:	8e e0       	ldi	r24, 0x0E	; 14
+ 190:	0e 94 49 00 	call	0x92	; 0x92 <LCD_cmnd>
+ 194:	2f ef       	ldi	r18, 0xFF	; 255
+ 196:	89 ef       	ldi	r24, 0xF9	; 249
+ 198:	90 e0       	ldi	r25, 0x00	; 0
+ 19a:	21 50       	subi	r18, 0x01	; 1
+ 19c:	80 40       	sbci	r24, 0x00	; 0
+ 19e:	90 40       	sbci	r25, 0x00	; 0
+ 1a0:	e1 f7       	brne	.-8      	; 0x19a <LCD_initialize+0x6c>
+ 1a2:	00 c0       	rjmp	.+0      	; 0x1a4 <LCD_initialize+0x76>
+ 1a4:	00 00       	nop
+	_delay_ms(20);
+	LCD_cmnd(0x01);
+ 1a6:	81 e0       	ldi	r24, 0x01	; 1
+ 1a8:	0e 94 49 00 	call	0x92	; 0x92 <LCD_cmnd>
+ 1ac:	2f ef       	ldi	r18, 0xFF	; 255
+ 1ae:	89 ef       	ldi	r24, 0xF9	; 249
+ 1b0:	90 e0       	ldi	r25, 0x00	; 0
+ 1b2:	21 50       	subi	r18, 0x01	; 1
+ 1b4:	80 40       	sbci	r24, 0x00	; 0
+ 1b6:	90 40       	sbci	r25, 0x00	; 0
+ 1b8:	e1 f7       	brne	.-8      	; 0x1b2 <LCD_initialize+0x84>
+ 1ba:	00 c0       	rjmp	.+0      	; 0x1bc <LCD_initialize+0x8e>
+ 1bc:	00 00       	nop
+ 1be:	08 95       	ret
+
+000001c0 <LCD_clear>:
+	_delay_ms(20);
+}
+void LCD_clear(void) //Function to clear the LCD Screen
+{
+	LCD_cmnd(0x01);
+ 1c0:	81 e0       	ldi	r24, 0x01	; 1
+ 1c2:	0e 94 49 00 	call	0x92	; 0x92 <LCD_cmnd>
+ 1c6:	8f e3       	ldi	r24, 0x3F	; 63
+ 1c8:	9f e1       	ldi	r25, 0x1F	; 31
+ 1ca:	01 97       	sbiw	r24, 0x01	; 1
+ 1cc:	f1 f7       	brne	.-4      	; 0x1ca <LCD_clear+0xa>
+ 1ce:	00 c0       	rjmp	.+0      	; 0x1d0 <LCD_clear+0x10>
+ 1d0:	00 00       	nop
+ 1d2:	08 95       	ret
+
+000001d4 <LCD_print>:
+	_delay_ms(2);
+}
+void LCD_print(char * str) //Function to print the string on LCD Screen
+{
+ 1d4:	1f 93       	push	r17
+ 1d6:	cf 93       	push	r28
+ 1d8:	df 93       	push	r29
+ 1da:	ec 01       	movw	r28, r24
+	unsigned char i=0;
+	while(str[i] != 0)
+ 1dc:	88 81       	ld	r24, Y
+ 1de:	88 23       	and	r24, r24
+ 1e0:	81 f0       	breq	.+32     	; 0x202 <LCD_print+0x2e>
+	LCD_cmnd(0x01);
+	_delay_ms(2);
+}
+void LCD_print(char * str) //Function to print the string on LCD Screen
+{
+	unsigned char i=0;
+ 1e2:	10 e0       	ldi	r17, 0x00	; 0
+	while(str[i] != 0)
+	{
+		LCD_data(str[i]);
+ 1e4:	0e 94 70 00 	call	0xe0	; 0xe0 <LCD_data>
+		i++;
+ 1e8:	1f 5f       	subi	r17, 0xFF	; 255
+ 1ea:	8f e1       	ldi	r24, 0x1F	; 31
+ 1ec:	9e e4       	ldi	r25, 0x4E	; 78
+ 1ee:	01 97       	sbiw	r24, 0x01	; 1
+ 1f0:	f1 f7       	brne	.-4      	; 0x1ee <LCD_print+0x1a>
+ 1f2:	00 c0       	rjmp	.+0      	; 0x1f4 <LCD_print+0x20>
+ 1f4:	00 00       	nop
+	_delay_ms(2);
+}
+void LCD_print(char * str) //Function to print the string on LCD Screen
+{
+	unsigned char i=0;
+	while(str[i] != 0)
+ 1f6:	fe 01       	movw	r30, r28
+ 1f8:	e1 0f       	add	r30, r17
+ 1fa:	f1 1d       	adc	r31, r1
+ 1fc:	80 81       	ld	r24, Z
+ 1fe:	81 11       	cpse	r24, r1
+ 200:	f1 cf       	rjmp	.-30     	; 0x1e4 <LCD_print+0x10>
+	{
+		LCD_data(str[i]);
+		i++;
+		_delay_ms(5);
+	}
+}
+ 202:	df 91       	pop	r29
+ 204:	cf 91       	pop	r28
+ 206:	1f 91       	pop	r17
+ 208:	08 95       	ret
+
+0000020a <LCD_set_curser>:
+void LCD_set_curser(unsigned char y, unsigned char x) //Function to move the Curser at (y,x) position
+{
+	if(y==1)
+ 20a:	81 30       	cpi	r24, 0x01	; 1
+ 20c:	29 f4       	brne	.+10     	; 0x218 <LCD_set_curser+0xe>
+	LCD_cmnd(0x7F+x);
+ 20e:	86 2f       	mov	r24, r22
+ 210:	81 58       	subi	r24, 0x81	; 129
+ 212:	0e 94 49 00 	call	0x92	; 0x92 <LCD_cmnd>
+ 216:	08 95       	ret
+	else if(y==2)
+ 218:	82 30       	cpi	r24, 0x02	; 2
+ 21a:	21 f4       	brne	.+8      	; 0x224 <LCD_set_curser+0x1a>
+	LCD_cmnd(0xBF+x);
+ 21c:	86 2f       	mov	r24, r22
+ 21e:	81 54       	subi	r24, 0x41	; 65
+ 220:	0e 94 49 00 	call	0x92	; 0x92 <LCD_cmnd>
+ 224:	08 95       	ret
+
+00000226 <LCD_num>:
+}
+void LCD_num(unsigned char num) //Function to display number
+{
+ 226:	cf 93       	push	r28
+ 228:	df 93       	push	r29
+ 22a:	c8 2f       	mov	r28, r24
+	//LCD_data(num/100 + 0x30);
+	//num = num%100;
+	LCD_data(num/10 + 0x30);
+ 22c:	dd ec       	ldi	r29, 0xCD	; 205
+ 22e:	8d 9f       	mul	r24, r29
+ 230:	d1 2d       	mov	r29, r1
+ 232:	11 24       	eor	r1, r1
+ 234:	d6 95       	lsr	r29
+ 236:	d6 95       	lsr	r29
+ 238:	d6 95       	lsr	r29
+ 23a:	8d 2f       	mov	r24, r29
+ 23c:	80 5d       	subi	r24, 0xD0	; 208
+ 23e:	0e 94 70 00 	call	0xe0	; 0xe0 <LCD_data>
+	LCD_data(num%10 + 0x30);
+ 242:	dd 0f       	add	r29, r29
+ 244:	8d 2f       	mov	r24, r29
+ 246:	88 0f       	add	r24, r24
+ 248:	88 0f       	add	r24, r24
+ 24a:	d8 0f       	add	r29, r24
+ 24c:	8c 2f       	mov	r24, r28
+ 24e:	8d 1b       	sub	r24, r29
+ 250:	80 5d       	subi	r24, 0xD0	; 208
+ 252:	0e 94 70 00 	call	0xe0	; 0xe0 <LCD_data>
+}
+ 256:	df 91       	pop	r29
+ 258:	cf 91       	pop	r28
+ 25a:	08 95       	ret
+
+0000025c <PWM_fan>:
+void PWM_fan(double duty_cycle)
+{
+ 25c:	cf 92       	push	r12
+ 25e:	df 92       	push	r13
+ 260:	ef 92       	push	r14
+ 262:	ff 92       	push	r15
+ 264:	6b 01       	movw	r12, r22
+ 266:	7c 01       	movw	r14, r24
+	DDRD = 0x20;
+ 268:	80 e2       	ldi	r24, 0x20	; 32
+ 26a:	81 bb       	out	0x11, r24	; 17
+	while (1)
+	{
+		ADCSRA |= 1<<ADSC; //Start conversion in ADC
+ 26c:	36 9a       	sbi	0x06, 6	; 6
+		while ((ADCSRA & (1<<ADIF)) == 0); //till the end of conversion
+ 26e:	34 9b       	sbis	0x06, 4	; 6
+ 270:	fe cf       	rjmp	.-4      	; 0x26e <PWM_fan+0x12>
+		adc_value = ADCH;
+ 272:	85 b1       	in	r24, 0x05	; 5
+ 274:	80 93 b2 00 	sts	0x00B2, r24
+		if(duty_cycle == 60)
+ 278:	20 e0       	ldi	r18, 0x00	; 0
+ 27a:	30 e0       	ldi	r19, 0x00	; 0
+ 27c:	40 e7       	ldi	r20, 0x70	; 112
+ 27e:	52 e4       	ldi	r21, 0x42	; 66
+ 280:	c7 01       	movw	r24, r14
+ 282:	b6 01       	movw	r22, r12
+ 284:	0e 94 53 02 	call	0x4a6	; 0x4a6 <__cmpsf2>
+ 288:	81 11       	cpse	r24, r1
+ 28a:	16 c0       	rjmp	.+44     	; 0x2b8 <PWM_fan+0x5c>
+		{
+			PORTD = 0x20;
+ 28c:	80 e2       	ldi	r24, 0x20	; 32
+ 28e:	82 bb       	out	0x12, r24	; 18
+ 290:	2f ef       	ldi	r18, 0xFF	; 255
+ 292:	83 ef       	ldi	r24, 0xF3	; 243
+ 294:	91 e0       	ldi	r25, 0x01	; 1
+ 296:	21 50       	subi	r18, 0x01	; 1
+ 298:	80 40       	sbci	r24, 0x00	; 0
+ 29a:	90 40       	sbci	r25, 0x00	; 0
+ 29c:	e1 f7       	brne	.-8      	; 0x296 <PWM_fan+0x3a>
+ 29e:	00 c0       	rjmp	.+0      	; 0x2a0 <PWM_fan+0x44>
+ 2a0:	00 00       	nop
+			_delay_ms(40);
+			PORTD = 0x00;
+ 2a2:	12 ba       	out	0x12, r1	; 18
+ 2a4:	2f ef       	ldi	r18, 0xFF	; 255
+ 2a6:	8d ee       	ldi	r24, 0xED	; 237
+ 2a8:	92 e0       	ldi	r25, 0x02	; 2
+ 2aa:	21 50       	subi	r18, 0x01	; 1
+ 2ac:	80 40       	sbci	r24, 0x00	; 0
+ 2ae:	90 40       	sbci	r25, 0x00	; 0
+ 2b0:	e1 f7       	brne	.-8      	; 0x2aa <PWM_fan+0x4e>
+ 2b2:	00 c0       	rjmp	.+0      	; 0x2b4 <PWM_fan+0x58>
+ 2b4:	00 00       	nop
+ 2b6:	46 c0       	rjmp	.+140    	; 0x344 <PWM_fan+0xe8>
+			_delay_ms(60);
+			if((adc_value != 25) || (adc_value != 26)) break;
+		}
+		if(duty_cycle == 70)
+ 2b8:	20 e0       	ldi	r18, 0x00	; 0
+ 2ba:	30 e0       	ldi	r19, 0x00	; 0
+ 2bc:	4c e8       	ldi	r20, 0x8C	; 140
+ 2be:	52 e4       	ldi	r21, 0x42	; 66
+ 2c0:	c7 01       	movw	r24, r14
+ 2c2:	b6 01       	movw	r22, r12
+ 2c4:	0e 94 53 02 	call	0x4a6	; 0x4a6 <__cmpsf2>
+ 2c8:	81 11       	cpse	r24, r1
+ 2ca:	13 c0       	rjmp	.+38     	; 0x2f2 <PWM_fan+0x96>
+		{
+			PORTD = 0x20;
+ 2cc:	80 e2       	ldi	r24, 0x20	; 32
+ 2ce:	82 bb       	out	0x12, r24	; 18
+ 2d0:	2f e7       	ldi	r18, 0x7F	; 127
+ 2d2:	86 e2       	ldi	r24, 0x26	; 38
+ 2d4:	94 e0       	ldi	r25, 0x04	; 4
+ 2d6:	21 50       	subi	r18, 0x01	; 1
+ 2d8:	80 40       	sbci	r24, 0x00	; 0
+ 2da:	90 40       	sbci	r25, 0x00	; 0
+ 2dc:	e1 f7       	brne	.-8      	; 0x2d6 <PWM_fan+0x7a>
+ 2de:	00 c0       	rjmp	.+0      	; 0x2e0 <PWM_fan+0x84>
+ 2e0:	00 00       	nop
+			_delay_ms(85);
+			PORTD = 0x00;
+ 2e2:	12 ba       	out	0x12, r1	; 18
+ 2e4:	8f e5       	ldi	r24, 0x5F	; 95
+ 2e6:	9a ee       	ldi	r25, 0xEA	; 234
+ 2e8:	01 97       	sbiw	r24, 0x01	; 1
+ 2ea:	f1 f7       	brne	.-4      	; 0x2e8 <PWM_fan+0x8c>
+ 2ec:	00 c0       	rjmp	.+0      	; 0x2ee <PWM_fan+0x92>
+ 2ee:	00 00       	nop
+ 2f0:	29 c0       	rjmp	.+82     	; 0x344 <PWM_fan+0xe8>
+			_delay_ms(15);
+			if((adc_value != 27) || (adc_value != 28)) break;
+		}
+		if(duty_cycle == 80)
+ 2f2:	20 e0       	ldi	r18, 0x00	; 0
+ 2f4:	30 e0       	ldi	r19, 0x00	; 0
+ 2f6:	40 ea       	ldi	r20, 0xA0	; 160
+ 2f8:	52 e4       	ldi	r21, 0x42	; 66
+ 2fa:	c7 01       	movw	r24, r14
+ 2fc:	b6 01       	movw	r22, r12
+ 2fe:	0e 94 53 02 	call	0x4a6	; 0x4a6 <__cmpsf2>
+ 302:	81 11       	cpse	r24, r1
+ 304:	13 c0       	rjmp	.+38     	; 0x32c <PWM_fan+0xd0>
+		{
+			PORTD = 0x20;
+ 306:	80 e2       	ldi	r24, 0x20	; 32
+ 308:	82 bb       	out	0x12, r24	; 18
+ 30a:	9f e7       	ldi	r25, 0x7F	; 127
+ 30c:	23 ea       	ldi	r18, 0xA3	; 163
+ 30e:	84 e0       	ldi	r24, 0x04	; 4
+ 310:	91 50       	subi	r25, 0x01	; 1
+ 312:	20 40       	sbci	r18, 0x00	; 0
+ 314:	80 40       	sbci	r24, 0x00	; 0
+ 316:	e1 f7       	brne	.-8      	; 0x310 <PWM_fan+0xb4>
+ 318:	00 c0       	rjmp	.+0      	; 0x31a <PWM_fan+0xbe>
+ 31a:	00 00       	nop
+			_delay_ms(95);
+			PORTD = 0x00;
+ 31c:	12 ba       	out	0x12, r1	; 18
+ 31e:	8f e1       	ldi	r24, 0x1F	; 31
+ 320:	9e e4       	ldi	r25, 0x4E	; 78
+ 322:	01 97       	sbiw	r24, 0x01	; 1
+ 324:	f1 f7       	brne	.-4      	; 0x322 <PWM_fan+0xc6>
+ 326:	00 c0       	rjmp	.+0      	; 0x328 <PWM_fan+0xcc>
+ 328:	00 00       	nop
+ 32a:	0c c0       	rjmp	.+24     	; 0x344 <PWM_fan+0xe8>
+			_delay_ms(5);
+			if((adc_value != 29) || (adc_value != 30)) break;
+		}
+		if(duty_cycle == 90)
+ 32c:	20 e0       	ldi	r18, 0x00	; 0
+ 32e:	30 e0       	ldi	r19, 0x00	; 0
+ 330:	44 eb       	ldi	r20, 0xB4	; 180
+ 332:	52 e4       	ldi	r21, 0x42	; 66
+ 334:	c7 01       	movw	r24, r14
+ 336:	b6 01       	movw	r22, r12
+ 338:	0e 94 53 02 	call	0x4a6	; 0x4a6 <__cmpsf2>
+ 33c:	81 11       	cpse	r24, r1
+ 33e:	96 cf       	rjmp	.-212    	; 0x26c <PWM_fan+0x10>
+		{
+			PORTD = 0x20;
+ 340:	80 e2       	ldi	r24, 0x20	; 32
+ 342:	82 bb       	out	0x12, r24	; 18
+			//PORTD = 0x00;
+			//_delay_ms(0);
+			if((adc_value != 31) || (adc_value != 32)) break;
+		}
+	}
+}
+ 344:	ff 90       	pop	r15
+ 346:	ef 90       	pop	r14
+ 348:	df 90       	pop	r13
+ 34a:	cf 90       	pop	r12
+ 34c:	08 95       	ret
+
+0000034e <main>:
+		}
+	}
+}
+int main(void)
+{
+	LCD_initialize();
+ 34e:	0e 94 97 00 	call	0x12e	; 0x12e <LCD_initialize>
+    while(1)
+    {
+        read_temperature();
+ 352:	0e 94 ac 01 	call	0x358	; 0x358 <read_temperature>
+ 356:	fd cf       	rjmp	.-6      	; 0x352 <main+0x4>
+
+00000358 <read_temperature>:
+	}
+}
+void read_temperature()//Function to read temperature
+{
+	unsigned char temperature;
+	ADCSRA = 0x87; //Enable ADC and select clk/128
+ 358:	87 e8       	ldi	r24, 0x87	; 135
+ 35a:	86 b9       	out	0x06, r24	; 6
+	ADMUX = 0xE0; //0b1110000, 11 for Vref=2.56, 1 for left justified,
+ 35c:	80 ee       	ldi	r24, 0xE0	; 224
+ 35e:	87 b9       	out	0x07, r24	; 7
+	LCD_cmnd(0x0C);
+ 360:	8c e0       	ldi	r24, 0x0C	; 12
+ 362:	0e 94 49 00 	call	0x92	; 0x92 <LCD_cmnd>
+	LCD_clear();
+ 366:	0e 94 e0 00 	call	0x1c0	; 0x1c0 <LCD_clear>
+	LCD_set_curser(2,1);
+ 36a:	61 e0       	ldi	r22, 0x01	; 1
+ 36c:	82 e0       	ldi	r24, 0x02	; 2
+ 36e:	0e 94 05 01 	call	0x20a	; 0x20a <LCD_set_curser>
+	LCD_print("FanSpeed:");
+ 372:	80 e6       	ldi	r24, 0x60	; 96
+ 374:	90 e0       	ldi	r25, 0x00	; 0
+ 376:	0e 94 ea 00 	call	0x1d4	; 0x1d4 <LCD_print>
+	LCD_set_curser(1,4);
+ 37a:	64 e0       	ldi	r22, 0x04	; 4
+ 37c:	81 e0       	ldi	r24, 0x01	; 1
+ 37e:	0e 94 05 01 	call	0x20a	; 0x20a <LCD_set_curser>
+	LCD_print("TEMP:");
+ 382:	8a e6       	ldi	r24, 0x6A	; 106
+ 384:	90 e0       	ldi	r25, 0x00	; 0
+ 386:	0e 94 ea 00 	call	0x1d4	; 0x1d4 <LCD_print>
+	LCD_set_curser(1,11);
+ 38a:	6b e0       	ldi	r22, 0x0B	; 11
+ 38c:	81 e0       	ldi	r24, 0x01	; 1
+ 38e:	0e 94 05 01 	call	0x20a	; 0x20a <LCD_set_curser>
+	LCD_data(0xDF);
+ 392:	8f ed       	ldi	r24, 0xDF	; 223
+ 394:	0e 94 70 00 	call	0xe0	; 0xe0 <LCD_data>
+	LCD_data('C');
+ 398:	83 e4       	ldi	r24, 0x43	; 67
+ 39a:	0e 94 70 00 	call	0xe0	; 0xe0 <LCD_data>
+	while(1)
+	{
+		ADCSRA |= 1<<ADSC; //Start conversion in ADC
+ 39e:	36 9a       	sbi	0x06, 6	; 6
+		while ((ADCSRA & (1<<ADIF)) == 0); //till the end of conversion
+ 3a0:	34 9b       	sbis	0x06, 4	; 6
+ 3a2:	fe cf       	rjmp	.-4      	; 0x3a0 <read_temperature+0x48>
+		adc_value = ADCH; //save the converted output
+ 3a4:	c5 b1       	in	r28, 0x05	; 5
+ 3a6:	c0 93 b2 00 	sts	0x00B2, r28
+		if (adc_value < 10) //function to convert hex to decimal number
+ 3aa:	ca 30       	cpi	r28, 0x0A	; 10
+ 3ac:	68 f4       	brcc	.+26     	; 0x3c8 <read_temperature+0x70>
+		{
+			temperature = adc_value + 0x30;
+			LCD_set_curser(1,9);
+ 3ae:	69 e0       	ldi	r22, 0x09	; 9
+ 3b0:	81 e0       	ldi	r24, 0x01	; 1
+ 3b2:	0e 94 05 01 	call	0x20a	; 0x20a <LCD_set_curser>
+			LCD_data(temperature);
+ 3b6:	8c 2f       	mov	r24, r28
+ 3b8:	80 5d       	subi	r24, 0xD0	; 208
+ 3ba:	0e 94 70 00 	call	0xe0	; 0xe0 <LCD_data>
+		}
+		if (adc_value > 9 ) //if hex is greater than 9, need to separate the digit, done by this function
+ 3be:	80 91 b2 00 	lds	r24, 0x00B2
+ 3c2:	8a 30       	cpi	r24, 0x0A	; 10
+ 3c4:	08 f4       	brcc	.+2      	; 0x3c8 <read_temperature+0x70>
+ 3c6:	56 c0       	rjmp	.+172    	; 0x474 <__stack+0x15>
+		{
+			LCD_set_curser(1,9);
+ 3c8:	69 e0       	ldi	r22, 0x09	; 9
+ 3ca:	81 e0       	ldi	r24, 0x01	; 1
+ 3cc:	0e 94 05 01 	call	0x20a	; 0x20a <LCD_set_curser>
+			LCD_num(adc_value);
+ 3d0:	80 91 b2 00 	lds	r24, 0x00B2
+ 3d4:	0e 94 13 01 	call	0x226	; 0x226 <LCD_num>
+			if((adc_value == 25)|(adc_value == 26))  {LCD_set_curser(2,10); LCD_print("500 RPM"); PWM_fan(60);}
+ 3d8:	80 91 b2 00 	lds	r24, 0x00B2
+ 3dc:	89 51       	subi	r24, 0x19	; 25
+ 3de:	82 30       	cpi	r24, 0x02	; 2
+ 3e0:	70 f4       	brcc	.+28     	; 0x3fe <read_temperature+0xa6>
+ 3e2:	6a e0       	ldi	r22, 0x0A	; 10
+ 3e4:	82 e0       	ldi	r24, 0x02	; 2
+ 3e6:	0e 94 05 01 	call	0x20a	; 0x20a <LCD_set_curser>
+ 3ea:	80 e7       	ldi	r24, 0x70	; 112
+ 3ec:	90 e0       	ldi	r25, 0x00	; 0
+ 3ee:	0e 94 ea 00 	call	0x1d4	; 0x1d4 <LCD_print>
+ 3f2:	60 e0       	ldi	r22, 0x00	; 0
+ 3f4:	70 e0       	ldi	r23, 0x00	; 0
+ 3f6:	80 e7       	ldi	r24, 0x70	; 112
+ 3f8:	92 e4       	ldi	r25, 0x42	; 66
+ 3fa:	0e 94 2e 01 	call	0x25c	; 0x25c <PWM_fan>
+			if((adc_value == 27)|(adc_value == 28))  {LCD_set_curser(2,10); LCD_print("1000RPM"); PWM_fan(70);}
+ 3fe:	80 91 b2 00 	lds	r24, 0x00B2
+ 402:	8b 51       	subi	r24, 0x1B	; 27
+ 404:	82 30       	cpi	r24, 0x02	; 2
+ 406:	70 f4       	brcc	.+28     	; 0x424 <read_temperature+0xcc>
+ 408:	6a e0       	ldi	r22, 0x0A	; 10
+ 40a:	82 e0       	ldi	r24, 0x02	; 2
+ 40c:	0e 94 05 01 	call	0x20a	; 0x20a <LCD_set_curser>
+ 410:	88 e7       	ldi	r24, 0x78	; 120
+ 412:	90 e0       	ldi	r25, 0x00	; 0
+ 414:	0e 94 ea 00 	call	0x1d4	; 0x1d4 <LCD_print>
+ 418:	60 e0       	ldi	r22, 0x00	; 0
+ 41a:	70 e0       	ldi	r23, 0x00	; 0
+ 41c:	8c e8       	ldi	r24, 0x8C	; 140
+ 41e:	92 e4       	ldi	r25, 0x42	; 66
+ 420:	0e 94 2e 01 	call	0x25c	; 0x25c <PWM_fan>
+			if((adc_value == 29)|(adc_value == 30))  {LCD_set_curser(2,10); LCD_print("1500RPM"); PWM_fan(80);}
+ 424:	80 91 b2 00 	lds	r24, 0x00B2
+ 428:	8d 51       	subi	r24, 0x1D	; 29
+ 42a:	82 30       	cpi	r24, 0x02	; 2
+ 42c:	70 f4       	brcc	.+28     	; 0x44a <read_temperature+0xf2>
+ 42e:	6a e0       	ldi	r22, 0x0A	; 10
+ 430:	82 e0       	ldi	r24, 0x02	; 2
+ 432:	0e 94 05 01 	call	0x20a	; 0x20a <LCD_set_curser>
+ 436:	80 e8       	ldi	r24, 0x80	; 128
+ 438:	90 e0       	ldi	r25, 0x00	; 0
+ 43a:	0e 94 ea 00 	call	0x1d4	; 0x1d4 <LCD_print>
+ 43e:	60 e0       	ldi	r22, 0x00	; 0
+ 440:	70 e0       	ldi	r23, 0x00	; 0
+ 442:	80 ea       	ldi	r24, 0xA0	; 160
+ 444:	92 e4       	ldi	r25, 0x42	; 66
+ 446:	0e 94 2e 01 	call	0x25c	; 0x25c <PWM_fan>
+			if((adc_value == 31)|(adc_value == 32))  {LCD_set_curser(2,10); LCD_print("2000RPM"); PWM_fan(90);}
+ 44a:	80 91 b2 00 	lds	r24, 0x00B2
+ 44e:	8f 51       	subi	r24, 0x1F	; 31
+ 450:	82 30       	cpi	r24, 0x02	; 2
+ 452:	08 f0       	brcs	.+2      	; 0x456 <read_temperature+0xfe>
+ 454:	a4 cf       	rjmp	.-184    	; 0x39e <read_temperature+0x46>
+ 456:	6a e0       	ldi	r22, 0x0A	; 10
+ 458:	82 e0       	ldi	r24, 0x02	; 2
+ 45a:	0e 94 05 01 	call	0x20a	; 0x20a <LCD_set_curser>
+ 45e:	88 e8       	ldi	r24, 0x88	; 136
+ 460:	90 e0       	ldi	r25, 0x00	; 0
+ 462:	0e 94 ea 00 	call	0x1d4	; 0x1d4 <LCD_print>
+ 466:	60 e0       	ldi	r22, 0x00	; 0
+ 468:	70 e0       	ldi	r23, 0x00	; 0
+ 46a:	84 eb       	ldi	r24, 0xB4	; 180
+ 46c:	92 e4       	ldi	r25, 0x42	; 66
+ 46e:	0e 94 2e 01 	call	0x25c	; 0x25c <PWM_fan>
+ 472:	95 cf       	rjmp	.-214    	; 0x39e <read_temperature+0x46>
+		}
+		else
+		{
+			LCD_clear();
+ 474:	0e 94 e0 00 	call	0x1c0	; 0x1c0 <LCD_clear>
+			LCD_print("* TEMP. SENSOR *");
+ 478:	80 e9       	ldi	r24, 0x90	; 144
+ 47a:	90 e0       	ldi	r25, 0x00	; 0
+ 47c:	0e 94 ea 00 	call	0x1d4	; 0x1d4 <LCD_print>
+			LCD_set_curser(2,1);
+ 480:	61 e0       	ldi	r22, 0x01	; 1
+ 482:	82 e0       	ldi	r24, 0x02	; 2
+ 484:	0e 94 05 01 	call	0x20a	; 0x20a <LCD_set_curser>
+			LCD_print("# NOT WORKING #");
+ 488:	81 ea       	ldi	r24, 0xA1	; 161
+ 48a:	90 e0       	ldi	r25, 0x00	; 0
+ 48c:	0e 94 ea 00 	call	0x1d4	; 0x1d4 <LCD_print>
+ 490:	2f ef       	ldi	r18, 0xFF	; 255
+ 492:	8b e4       	ldi	r24, 0x4B	; 75
+ 494:	9d e1       	ldi	r25, 0x1D	; 29
+ 496:	21 50       	subi	r18, 0x01	; 1
+ 498:	80 40       	sbci	r24, 0x00	; 0
+ 49a:	90 40       	sbci	r25, 0x00	; 0
+ 49c:	e1 f7       	brne	.-8      	; 0x496 <__stack+0x37>
+ 49e:	00 c0       	rjmp	.+0      	; 0x4a0 <__stack+0x41>
+ 4a0:	00 00       	nop
+			_delay_ms(600);
+			main();
+ 4a2:	0e 94 a7 01 	call	0x34e	; 0x34e <main>
+
+000004a6 <__cmpsf2>:
+ 4a6:	03 d0       	rcall	.+6      	; 0x4ae <__fp_cmp>
+ 4a8:	08 f4       	brcc	.+2      	; 0x4ac <__cmpsf2+0x6>
+ 4aa:	81 e0       	ldi	r24, 0x01	; 1
+ 4ac:	08 95       	ret
+
+000004ae <__fp_cmp>:
+ 4ae:	99 0f       	add	r25, r25
+ 4b0:	00 08       	sbc	r0, r0
+ 4b2:	55 0f       	add	r21, r21
+ 4b4:	aa 0b       	sbc	r26, r26
+ 4b6:	e0 e8       	ldi	r30, 0x80	; 128
+ 4b8:	fe ef       	ldi	r31, 0xFE	; 254
+ 4ba:	16 16       	cp	r1, r22
+ 4bc:	17 06       	cpc	r1, r23
+ 4be:	e8 07       	cpc	r30, r24
+ 4c0:	f9 07       	cpc	r31, r25
+ 4c2:	c0 f0       	brcs	.+48     	; 0x4f4 <__fp_cmp+0x46>
+ 4c4:	12 16       	cp	r1, r18
+ 4c6:	13 06       	cpc	r1, r19
+ 4c8:	e4 07       	cpc	r30, r20
+ 4ca:	f5 07       	cpc	r31, r21
+ 4cc:	98 f0       	brcs	.+38     	; 0x4f4 <__fp_cmp+0x46>
+ 4ce:	62 1b       	sub	r22, r18
+ 4d0:	73 0b       	sbc	r23, r19
+ 4d2:	84 0b       	sbc	r24, r20
+ 4d4:	95 0b       	sbc	r25, r21
+ 4d6:	39 f4       	brne	.+14     	; 0x4e6 <__fp_cmp+0x38>
+ 4d8:	0a 26       	eor	r0, r26
+ 4da:	61 f0       	breq	.+24     	; 0x4f4 <__fp_cmp+0x46>
+ 4dc:	23 2b       	or	r18, r19
+ 4de:	24 2b       	or	r18, r20
+ 4e0:	25 2b       	or	r18, r21
+ 4e2:	21 f4       	brne	.+8      	; 0x4ec <__fp_cmp+0x3e>
+ 4e4:	08 95       	ret
+ 4e6:	0a 26       	eor	r0, r26
+ 4e8:	09 f4       	brne	.+2      	; 0x4ec <__fp_cmp+0x3e>
+ 4ea:	a1 40       	sbci	r26, 0x01	; 1
+ 4ec:	a6 95       	lsr	r26
+ 4ee:	8f ef       	ldi	r24, 0xFF	; 255
+ 4f0:	81 1d       	adc	r24, r1
+ 4f2:	81 1d       	adc	r24, r1
+ 4f4:	08 95       	ret
+
+000004f6 <_exit>:
+ 4f6:	f8 94       	cli
+
+000004f8 <__stop_program>:
+ 4f8:	ff cf       	rjmp	.-2      	; 0x4f8 <__stop_program>
